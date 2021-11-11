@@ -33,6 +33,7 @@ public class EjemploParamsController {
         return "params/ver";
     }
 
+    //obtencion de los paramtros del request mediante la clase httpServletRequest en lugar de anotaciones
     @GetMapping("/mix-params-request")
     public String mixParam(HttpServletRequest request, Model model){
         //los parametros se pueden obtener a traves del objeto request

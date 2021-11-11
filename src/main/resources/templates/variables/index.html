@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}"/>
+  <title th:text="${titulo}">Title</title>
+</head>
+<body>
+  <h1 class="color-rojo" th:text="${titulo}"></h1>
+  <h2 class="color-azul">Decorado con estilos</h2>
+
+  <a class="color-azul" th:href="@{/variables/string/climacus}">climacus</a>
+  <a th:href="@{/variables/string/anti-climacus}">anti-climacus</a>
+  <a th:href="@{/variables/string/hola/climacus}">hola climacus</a>
+
+  <img th:src="@{/imgs/img.png}"></img>
+</body>
+</html>

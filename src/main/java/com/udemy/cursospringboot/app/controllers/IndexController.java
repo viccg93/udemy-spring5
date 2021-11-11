@@ -1,6 +1,7 @@
 package com.udemy.cursospringboot.app.controllers;
 
 import com.udemy.cursospringboot.app.models.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +19,20 @@ public class IndexController {
 
     //aqui se definen los handlers
 
+    //vamos a injectar los textos
+    //para realizar la inyeccion de datos, se hace a traves de la anotacion @Value ${key}
+    @Value("${index.texto}")
+    private String textoIndex;
+
+    @Value("${index.perfil}")
+    private String textoPerfil;
+
+    @Value("${index.listar}")
+    private String textoListar;
+
     @RequestMapping(value = {"/index", "/", "/home"}, method = RequestMethod.GET) //por defecto es de tipo get
     public String index(Model model){
-        model.addAttribute("titulo","Hola Spring!");
+        model.addAttribute("titulo",textoIndex);
         return "index";
     }
 
@@ -31,7 +43,7 @@ public class IndexController {
         usuario.setApellido("CG");
         usuario.setEmail("yosoyironm4n@gmail.com");
         model.addAttribute("usuario",usuario);
-        model.addAttribute("titulo","Perfil del usuario: ".concat(usuario.getNombre()));
+        model.addAttribute("titulo",textoPerfil.concat(usuario.getNombre()));
         return "perfil";
     }
 
@@ -42,7 +54,7 @@ public class IndexController {
         usuarios.add(new Usuario("alberto","briseño","abr@email.com"));
         usuarios.add(new Usuario("yuliana","vargas","yvr@email.com"));
         model.addAttribute("usuarios",usuarios); */
-        model.addAttribute("titulo","Lista de usuarios");
+        model.addAttribute("titulo",textoListar);
         return "listar";
     }
 
